@@ -88,6 +88,8 @@ public interface ClientServer extends Server {
 
 	SubuserManager getSubuserManager();
 
+	PteroAction<Integer> retrieveBackupCount();
+
 	PaginationAction<Backup> retrieveBackups();
 
 	PteroAction<Backup> retrieveBackup(UUID uuid);
