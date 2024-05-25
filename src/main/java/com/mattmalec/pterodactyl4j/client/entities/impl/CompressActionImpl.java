@@ -51,6 +51,12 @@ public class CompressActionImpl extends PteroActionImpl<File> implements Compres
 		return this;
 	}
 
+    @Override
+    public CompressAction addFiles(Collection<GenericFile> files) {
+        this.files.addAll(files);
+        return this;
+    }
+
 	@Override
 	public CompressAction addFiles(GenericFile file, GenericFile... files) {
 		this.files.add(file);

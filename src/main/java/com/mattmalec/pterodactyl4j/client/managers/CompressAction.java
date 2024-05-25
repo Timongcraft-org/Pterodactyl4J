@@ -26,6 +26,8 @@ public interface CompressAction extends PteroAction<File> {
 
 	CompressAction addFile(GenericFile file);
 
+	CompressAction addFiles(Collection<GenericFile> files);
+
 	CompressAction addFiles(GenericFile file, GenericFile... files);
 
 	CompressAction setRoot(Directory rootDirectory);
