@@ -21,10 +21,8 @@ import com.mattmalec.pterodactyl4j.client.entities.ClientServer;
 import com.mattmalec.pterodactyl4j.client.entities.Directory;
 import com.mattmalec.pterodactyl4j.client.entities.File;
 import com.mattmalec.pterodactyl4j.client.entities.GenericFile;
-import com.mattmalec.pterodactyl4j.client.managers.CompressAction;
-import com.mattmalec.pterodactyl4j.client.managers.DeleteAction;
-import com.mattmalec.pterodactyl4j.client.managers.RenameAction;
-import com.mattmalec.pterodactyl4j.client.managers.UploadFileAction;
+import com.mattmalec.pterodactyl4j.client.managers.*;
+
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -78,7 +76,7 @@ public class DirectoryImpl implements Directory {
 	}
 
 	@Override
-	public PteroAction<Void> decompress(File compressedFile) {
+	public DecompressAction decompress(File compressedFile) {
 		return server.getFileManager().decompress(compressedFile);
 	}
 
