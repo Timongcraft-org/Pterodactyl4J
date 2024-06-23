@@ -49,7 +49,24 @@ public class DecompressActionImpl extends PteroActionImpl<Void> implements Decom
 		Checks.notNull(compressedFile, "Compressed File");
 
 		if(rootDirectory == null) {
-			JSONObject json = new JSONObject().put("root", "/").put("file", compressedFile.getPath());
+			String filePath = compressedFile.getPath();
+
+			if(filePath.endsWith("/")) {
+				filePath = filePath.substring(0, filePath.length() - 1);
+			}
+
+			int lastSlashIndex = filePath.lastIndexOf('/');
+			String parentDir;
+
+			if(lastSlashIndex == -1) {
+				parentDir = "/";
+				filePath = compressedFile.getPath();
+			} else {
+				parentDir = filePath.substring(0, lastSlashIndex);
+				filePath = filePath.substring(lastSlashIndex + 1);
+			}
+
+			JSONObject json = new JSONObject().put("root", parentDir).put("file", filePath);
 			return getRequestBody(json);
 		}
 		String rootPath = rootDirectory.getPath() + "/";
